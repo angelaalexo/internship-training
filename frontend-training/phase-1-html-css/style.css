@@ -1,14 +1,25 @@
+/* Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Body */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    font-size: 12px;
+    color: #333;
 }
 
+/* Headings */
+h2, h3 {
+    color: #6a0dad;
+    margin-bottom: 0.5rem;
+}
+
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -18,10 +29,23 @@ header {
     color: white;
 }
 
+header h1 {
+    padding-left: 30px;
+}
+
+/* Navigation */
+nav li {
+    border-radius: 16px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    background-color: #7e48a1;
+}
+
 nav ul {
     display: flex;
-    gap: 1rem;
+    gap: 20px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav a {
@@ -35,24 +59,155 @@ nav a:focus {
 
 /* Main layout */
 main {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    padding: 2rem;
+    padding: 3rem;
 }
 
-/* Experience timeline */
+/* Profile section: Image + Description side by side */
+.profile-section {
+    display: flex;
+    align-items: stretch; /* make both same height */
+    justify-content: center;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* Image container */
+#image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image img {
+    width: 90%;             /* make the image smaller */
+    height: 100%;           /* match height of About Me */
+    object-fit: cover;      /* crop to fit proportionally */
+    border-radius: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* About Me section */
+.desc {
+    flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+#about-me {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+/* General UL & icons */
+ul {
+    list-style: none;
+    padding-left: 0;
+    justify-content: right;
+}
+
+.icons {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Education section */
+#education {
+    padding: 20px;
+    background: linear-gradient(135deg, #caa3da, #9804fd);
+    border-radius: 15px;
+    margin: 20px 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+#education h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px #d7b7f1;
+}
+
+.edu-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Experience section */
+#experience {
+    padding: 20px;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    border-radius: 15px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 20px 0;
+}
+
+#experience h2 {
+    text-align: center;
+    color: #333;
+    text-shadow: 1px 1px #fff;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
 #experience ul {
     list-style: none;
+    padding: 0;
 }
 
 #experience li {
-    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 12px 20px;
+    margin: 10px 0;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Aside / articles */
+#experience li:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#experience strong {
+    color: #9804fd;
+}
+
+/* Profiles section */
 aside ul {
-    list-style: disc inside;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 50px;
+    justify-content: flex-start;
+}
+
+aside ul li {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 /* Footer */
@@ -61,4 +216,21 @@ footer {
     text-align: center;
     background: #d7b7f1;
     color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .desc {
+        width: 100%;
+    }
 }
