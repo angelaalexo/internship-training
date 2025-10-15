@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #a269c9;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav a:focus {
+    outline: 2px solid #0077cc;
+}
+
+/* Main layout */
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Experience timeline */
+#experience ul {
+    list-style: none;
+}
+
+#experience li {
+    margin-bottom: 1rem;
+}
+
+/* Aside / articles */
+aside ul {
+    list-style: disc inside;
+}
+
+/* Footer */
+footer {
+    padding: 1rem;
+    text-align: center;
+    background: #d7b7f1;
+    color: white;
+}
