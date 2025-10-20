@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    /*fonts*/
+    --font-family: "Poppins", sans-serif;
+    --font-logo: "BBH Sans Hegarty", sans-serif;
+
+    /* primary colors*/
+    --white: #ffff;
+    --primary-light-blue: #02affc;
+    --primary-blue: #1f2937;
+    --primary-dark-blue: #002639;
+
+    /*text colors*/
+    --text-grey: #534f4f;
+    --text-dark-grey: #333333;
+
+    /*button*/
+    --btn-primary: #02affc;
+    --btn-hover: #002639;
+    --btn-transition: background-color 0.3s;
+
+    /*font*/
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    --transform-translate: translate(-50%, -50%);
+
+    /*blur*/
+    --blur-filter: blur(15px);
+}
+
