@@ -22,13 +22,20 @@ main {
 }
 
 .site-header {
+    background-color: var(--white);
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 100;
+    padding: 0.2rem 2rem;
+    font-family: var(--font-family);
+    font-optical-sizing: auto;
+    font-weight: var(--font-medium);
+    font-style: normal;
+    font-variation-settings:
+            "wdth" 300;
+    position: fixed;
     width: 100%;
-    z-index: 1000;
-    background-color: var(--white);
-    padding: 0.5rem 2rem;
 }
 
 
@@ -458,7 +465,7 @@ main {
     position: absolute;
     z-index: 0;
     top: 10%;
-    left: 95%;
+    left: 100%;
     transform: var(--transform-translate);
     width: auto;
     height: auto;
@@ -1523,13 +1530,8 @@ span:hover .arrow-icon {
         font-size: 1.5rem;
     }
 
-    .feature-spiral {
-        width: 40%;
-    }
-
     .feature-spiral{
-        transform: translateX(300px);
-        position: relative;
+        display: none;
 
     }
 
