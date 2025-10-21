@@ -820,7 +820,7 @@ main {
 
 /* RESOURSE */
 .resources {
-    padding: 6rem 2rem;
+    padding: 6rem 4rem;
     background-color: var(--white);
     text-align: center;
 }
@@ -833,7 +833,7 @@ main {
 .resources-main h2 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    padding-left: 2rem;
+    padding-left: 0.5rem;
 
     color: var(--primary-dark-blue);
 }
@@ -870,11 +870,9 @@ main {
 .resource::after {
     content: "";
     position: absolute;
-    bottom: auto;
-    left: auto;
-    width: auto;
-    height: auto;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1.0), transparent);
     pointer-events: none;
 }
 
@@ -1153,7 +1151,7 @@ span:hover .arrow-icon {
         content: "";
         position: absolute;
         bottom: 0;
-        left: 0%;
+        left: 0;
         top: 20%;
         width: 104%;
         height: 75%;
@@ -1547,9 +1545,9 @@ span:hover .arrow-icon {
         left: 50%;
         transform: translate(-50%, -50%);
 
-        width: 90%;
-        padding: 1.5rem;
-        gap: 0.75rem;
+        width: 95%;
+        padding: 1rem;
+        gap: 0.5rem;
         flex-direction: column;
     }
 
@@ -1557,15 +1555,15 @@ span:hover .arrow-icon {
         flex: 1 1 100%;
         max-width: none;
         min-width: 0;
-        padding-top: 2rem;
+        padding-top: 1.5rem;
     }
 
     .metric h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .metric p {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
     }
 
     .testimonials-grid {
