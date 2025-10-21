@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>modeliks</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/root.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&display=swap" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,32 +15,34 @@
 <body>
 
 <header class="site-header" role="banner">
-    <div class="container site-header">
+    <div class="container">
         <a href="#" class="logo">
             <img src="assets/icons/logoo.png" alt="logo" id="logo">
             <span class="logo_text">modeliks</span>
         </a>
 
-        <button class="menu-toggle" aria-label="Toggle menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
+        <div id="menuToggle">
+            <input type="checkbox" id="menuCheckbox" />
+            <span></span>
+            <span></span>
+            <span></span>
 
-        <nav>
-            <ul class="nav_list" role="navigation">
-                <li class="nav_item nav_item_dropdown">
-                    <a href="#features" class="nav_feature">Features</a>
-                    <ul class="dropdown">
-                        <li><a href="#feature1">Feature 1</a></li>
-                        <li><a href="#feature2">Feature 2</a></li>
-                        <li><a href="#feature3">Feature 3</a></li>
-                    </ul>
-                </li>
-                <li class="nav_item"><a href="#industries">Industries</a></li>
-                <li class="nav_item"><a href="#knowledge">Knowledge Base</a></li>
-                <li class="nav_item"><a href="#pricing">Pricing</a></li>
-                <li class="nav_item"><a href="#about">About Us</a></li>
+            <ul id="menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#knowledge">Knowledge Base</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+        </div>
+
+        <nav class="desktop-nav">
+            <ul class="nav_list">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#knowledge">Knowledge Base</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About Us</a></li>
             </ul>
         </nav>
 
@@ -63,8 +59,8 @@
     </div>
 </header>
 
-<main>
 
+<main>
     <section class="hero">
         <div class="hero-text">
             <h1>Business Plan And Evaluation Software</h1>
@@ -180,8 +176,8 @@
 
 
     <section class="metrics-container">
-        <div class="metrics">
-            <div class="metrics-row metrics-main">
+        <div class="metrics" style="background-image: url('assets/img/metrics bg.png');">
+            <div class="wrapper">
                 <div class="metric">
                     <h2>2 Hours</h2>
                     <p>to create vc quality pitch deck (once all research is done)</p>
@@ -202,32 +198,30 @@
                     <h2>1 Click</h2>
                     <p>to report your business performance vs your plan</p>
                 </div>
-            </div>
-
-            <div class="metrics-row metrics-sub">
-                <div class="metric-small">
+                <div class="metric">
                     <h2>120+</h2>
                     <p>pitch deck slide templates</p>
                 </div>
-                <div class="metric-small">
+                <div class="metric">
                     <h2>10</h2>
                     <p>industry specific financial models</p>
                 </div>
-                <div class="metric-small">
+                <div class="metric">
                     <h2>3</h2>
                     <p>valuation methods</p>
                 </div>
-                <div class="metric-small">
+                <div class="metric">
                     <h2>SBA</h2>
                     <p>approved business plan format</p>
                 </div>
-                <div class="metric-small">
+                <div class="metric">
                     <h2>100+</h2>
                     <p>automated financial reports</p>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <section class="testimonials">
