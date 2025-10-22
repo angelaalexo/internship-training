@@ -830,19 +830,14 @@ main {
     padding: 6rem 4rem;
     background-color: var(--white);
     text-align: center;
-}
-
-.resources-main {
-    max-width: 100%;
-    margin: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .resources-main h2 {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
-    padding-left: 0.5rem;
-
     color: var(--primary-dark-blue);
+    margin-bottom: 3rem;
 }
 
 .resources-grid {
@@ -851,66 +846,65 @@ main {
     gap: 1rem;
 }
 
-.resource:hover {
-    transform: translateY(-5px);
-}
-
 .resource {
     position: relative;
-    height: 500px;
     border-radius: 10px;
-    color: var(--white);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: left;
-    background-size: cover;
-    background-position: center;
     overflow: hidden;
-    z-index: 2;
-    gap: 0.5rem;
+    background-image: inherit;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-size: 120% 110%;
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 700px;
 }
+
 
 .resource::after {
     content: "";
     position: absolute;
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
-    background: linear-gradient(to top, rgba(0, 0, 0, 1.0), transparent);
-    pointer-events: none;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
+    z-index: 1;
 }
 
-.resources-main h1{
-    padding-left: 0.5rem;
+.resource-content {
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    color: #fff;
     z-index: 2;
 }
 
-.resource span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
+.resource:hover {
+    transform: translateY(-5px);
+}
+
+.resource-content {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    color: var(--white);
     z-index: 2;
+    text-align: left;
+}
+
+.resource-content h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
 }
 
 .read-more {
-    font-weight: var(--font-semi-bold);
+    bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--white);
     text-decoration: none;
+    font-weight: var(--font-semi-bold);
     transition: color 0.3s ease;
-}
-
-.resource-lines {
-    position: absolute;
-    z-index: 0;
-    left: 10%;
-    transform: var(--transform-translate);
-    pointer-events: none;
-    width: auto;
-    height: auto;
 }
 
 .read-more:hover {
@@ -918,24 +912,16 @@ main {
 }
 
 .arrow-icon {
-    width: 38px;
+    width: 28px;
     height: auto;
-    fill: var(--white);
-    margin-left: 0.5rem;
-    vertical-align: middle;
+    fill: currentColor;
     transition: transform 0.3s ease;
 }
 
-.read-more {
-    font-weight: var(--font-semi-bold);
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-span:hover .arrow-icon {
+.read-more:hover .arrow-icon {
     transform: translateX(4px);
 }
+
 
 /* FOOTER */
 .site-footer {
@@ -1128,126 +1114,13 @@ span:hover .arrow-icon {
         padding: 3rem 2rem 6rem;
     }
 
-    .resources-grid {
-        position: relative;
-        display: grid;
-        overflow: hidden;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
 
-    .resource img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .resource-lines{
-        width: auto;
-    }
-
-    .resource {
-        max-height: 500px;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .resource::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        top: 20%;
-        width: 104%;
-        height: 75%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-    }
 
     .footer-content {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 2rem;
         align-items: start;
-    }
-
-    .line-footer{
-        width: 100%;
-    }
-}
-
-@media (max-width: 1024px) {
-    .container {
-        gap: 6rem;
-    }
-
-    .nav_list {
-        gap: 4rem;
-    }
-
-    .hero {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 3rem 2rem;
-        background-position: center;
-        background-size: cover;
-    }
-
-    .hero-text {
-        max-width: 600px;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero h3 {
-        font-size: 1.1rem;
-    }
-
-    .hero-arrow {
-        width: auto;
-    }
-
-    .feature {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .feature-text,
-    .feature img {
-        width: 100%;
-        height: auto;
-    }
-
-    .metrics {
-        position: relative;
-        padding: 3rem 2rem;
-        text-align: center;
-    }
-
-    .metrics-row .metric-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 120%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
-        z-index: 0;
-    }
-
-    .testimonial img{
-        width: 100%;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        text-align: center;
     }
 
     .line-footer{
@@ -1291,14 +1164,14 @@ span:hover .arrow-icon {
     }
 
     .hero {
-        padding: 2rem 1rem;
-        background-size: contain;
-        background-position: top center;
         flex-direction: row;
         align-items: center;
         justify-content: center;
         text-align: left;
+        padding: 2rem 1rem;
         gap: 1.5rem;
+        background-position: center top;
+        background-size: contain;
     }
 
     .hero-text {
@@ -1317,22 +1190,35 @@ span:hover .arrow-icon {
         font-size: 0.9rem;
     }
 
+    .hero-arrow {
+        width: auto;
+    }
+
     .laptop-img {
         width: 100%;
         height: auto;
     }
 
+    .feature,
     .feature-left {
         flex-direction: column;
+        text-align: center;
     }
 
     .feature-text,
     .feature img {
-        width: auto;
+        width: 100%;
+        height: auto;
     }
 
-    .feature-spiral{
+    .feature-spiral {
         transform: translateX(400px);
+    }
+
+    .metrics {
+        position: relative;
+        padding: 3rem 1.5rem;
+        text-align: center;
     }
 
     .metrics-row.metrics-main,
@@ -1342,9 +1228,15 @@ span:hover .arrow-icon {
         justify-items: center;
     }
 
-    .metrics {
-        padding: 3rem 1.5rem;
-        text-align: center;
+    .metrics-row .metric-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        z-index: 0;
     }
 
     .testimonial-container {
@@ -1353,8 +1245,13 @@ span:hover .arrow-icon {
         text-align: center;
     }
 
+    .testimonial img,
     .testimonial-img {
         width: 100%;
+    }
+
+    .testimonial-img {
+        transform: translateX(-200px);
     }
 
     .testimonials-grid {
@@ -1363,46 +1260,18 @@ span:hover .arrow-icon {
         gap: 2rem;
     }
 
-    .testimonial-img {
-        transform: translateX(-200px);
-    }
-
     .resources-grid {
-        position: relative;
-        display: grid;
-        overflow: hidden;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
-    }
-
-    .resource img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .resource-lines{
-        width: auto;
+        display: grid;
+        justify-items: center;
+        align-items: center;
     }
 
     .resource {
         max-height: 500px;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .resource::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0%;
-        top: 20%;
-        width: 104%;
-        height: 75%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-        pointer-events: none;
+        max-width: 300px;
+        width: 100%;
     }
 
     .footer-content {
@@ -1422,7 +1291,7 @@ span:hover .arrow-icon {
         gap: 1.5rem;
     }
 
-    .line-footer{
+    .line-footer {
         width: 100%;
     }
 }
@@ -1584,40 +1453,17 @@ span:hover .arrow-icon {
     }
 
     .resources-grid {
-        position: relative;
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(1, 1fr);
         gap: 2rem;
+        display: grid;
         justify-items: center;
-    }
-
-    .resource img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .resource-lines{
-        width: auto;
-    }
-
-    .resource {
-        max-height: 750px;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
         align-items: center;
     }
 
-    .resource::after {
-        content: "";
-        position: absolute;
-        left: 5%;
-        width: 90%;
-        height: 75%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-        pointer-events: none;
+    .resource {
+        max-height: 500px;
+        max-width: 300px;
+        width: 100%;
     }
 
     .footer-content {
@@ -1769,42 +1615,8 @@ span:hover .arrow-icon {
     }
 
     .resources-grid {
-        position: relative;
-        overflow: hidden;
-        display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
-        justify-items: center;
-    }
-
-    .resource img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .resource {
-        max-height: 450px;
-        max-width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .resource-lines{
-        width: auto;
-    }
-
-    .resource::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0%;
-        top: 20%;
-        width: 104%;
-        height: 75%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-        pointer-events: none;
     }
 
     .footer-content {
