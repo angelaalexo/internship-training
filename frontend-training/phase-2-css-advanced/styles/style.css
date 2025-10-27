@@ -699,7 +699,7 @@ main {
 /*TESTIMONIALS */
 .testimonials {
     background-color: var(--white); /
-    padding: 4rem 4rem 4rem 4rem;
+padding: 4rem 4rem 4rem 4rem;
     text-align: center;
     font-family: "Open Sans", sans-serif;
     color: var(--primary-dark-blue);
@@ -1346,6 +1346,7 @@ main {
 
     .hero {
         padding: 2rem 1rem;
+        margin-top: 2rem;
         background-size: contain;
         background-position: top center;
         flex-direction: row;
@@ -1495,9 +1496,12 @@ main {
         align-items: center;
     }
 
-
     .hero h1 {
         font-size: 1.8rem;
+    }
+
+    .hero{
+        margin-top: 2rem;
     }
 
     .site-header {
@@ -1632,5 +1636,3 @@ main {
         width: 100%;
     }
 }
-
-
