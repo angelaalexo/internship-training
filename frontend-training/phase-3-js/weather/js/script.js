@@ -1,6 +1,6 @@
 const api_key = '4a017501be99653a108f5c3aa5267ba6'
 const searchBtn = document.querySelector(".search-btn")
-const cityInput = document.querySelector('.city-input')
+let cityInput = document.querySelector('.city-input')
 const weatherInfo = document.querySelector('.weather-info')
 
 cityInput.addEventListener('keypress', function(e) {
@@ -29,6 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if(lastCity){
         getWeather(lastCity)
+        cityInput.value = lastCity
     }
 })
 
