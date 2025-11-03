@@ -1,0 +1,182 @@
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.movie-container {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 95%;
+    max-width: 1400px;
+    height: 90vh;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(0, 255, 200, 0.15), inset 0 0 20px rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: visible; /* Changed from hidden */
+}
+
+.movie-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 90deg, #00ffcc, #0066ff, #ff0099, #00ffcc);
+    animation: rotate 8s linear infinite;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.movie-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.movie-input h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0,255,200,0.6);
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1050;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #0066ff, #00ffcc);
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0,255,200,0.3);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #00ffcc, #0066ff);
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(0,255,200,0.6);
+}
+
+.search-btn,
+.prev-btn,
+.next-btn {
+    padding: 0.7rem 1.3rem;
+    margin-left: 5px;
+    background: linear-gradient(135deg, #ff0080, #ff8c00);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(255,128,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.prev-btn,
+.next-btn {
+    display: none;
+}
+
+.search-btn:hover,
+.prev-btn:hover,
+.next-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(255,128,0,0.7);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+.results-section,
+.details-container,
+.favorites-container {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1rem;
+    overflow-y: auto;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.15);
+    z-index: -1;
+}
+
+
+.results-section:hover,
+.details-container:hover,
+.favorites-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0,255,200,0.3);
+}
+
+h1, h2 {
+    color: #e8f9f9;
+    text-align: center;
+    margin-top: 0;
+    text-shadow: 0 0 15px rgba(0,255,200,0.4);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 10px;
+}
+
+.results::-webkit-scrollbar,
+.details-container::-webkit-scrollbar,
+.favorites-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.results::-webkit-scrollbar-thumb,
+.details-container::-webkit-scrollbar-thumb,
+.favorites-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0066ff, #00ffcc);
+    border-radius: 10px;
+}
+
+.results::-webkit-scrollbar-track,
+.details-container::-webkit-scrollbar-track,
+.favorites-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search & Favorites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="movie-container">
+
+        <header class="movie-input">
+            <h1>Pick a genre and we will give you suggestions! </h1>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Genre
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Comedy</a>
+                    <a class="dropdown-item" href="#">Romance</a>
+                    <a class="dropdown-item" href="#">Horror</a>
+                    <a class="dropdown-item" href="#">Thriller</a>
+                    <a class="dropdown-item" href="#">Drama</a>
+                    <a class="dropdown-item" href="#">Western</a>
+                    <a class="dropdown-item" href="#">Science fiction</a>
+                    <a class="dropdown-item" href="#">Fantasy</a>
+                    <a class="dropdown-item" href="#">Musical</a>
+                    <a class="dropdown-item" href="#">Animated</a>
+                    <a class="dropdown-item" href="#">Sports</a>
+
+                </div>
+            </div>
+            <button class="search-btn">Search</button>
+        </header>
+
+        <main class="content">
+
+            <section class="results-section">
+                <h1>Results</h1>
+                <div class="results">
+
+                </div>
+                <div class="pagination">
+                    <button class="prev-btn">Previous</button>
+                    <button class="next-btn">Next</button>
+                </div>
+            </section>
+
+            <aside class="details-container">
+                <h2>Details</h2>
+                <div class="movie-details">
+
+                </div>
+            </aside>
+
+            <aside class="favorites-container">
+                <h2>Favorites</h2>
+                <div class="movie-favorites">
+
+                </div>
+            </aside>
+
+        </main>
+    </div>
+
+
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@ $(document).ready( function () {
         var filter = $(this).attr('data-filter');
 
         $('.filter-btn').removeClass('active')
-        $(this).addClass('active')
+        $(this).addClass('active') // remove the active btn and adds it to the one clicked
 
         if (filter === 'all'){
             $('.gallery-item').fadeIn();

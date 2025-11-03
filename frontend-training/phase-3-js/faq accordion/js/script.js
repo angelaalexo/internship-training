@@ -11,7 +11,7 @@ $(document).ready( function () {
         /* If the faq question is not active
         * answer up */
         else {
-            $('.faq-question').not(this).removeClass('active');
+            $('.faq-question').not(this).removeClass('active'); //if the q is not the one clicked it's not active
             $('.faq-answer').not(answer).slideUp();
 
             /* Open the question */

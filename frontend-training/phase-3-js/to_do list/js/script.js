@@ -50,7 +50,7 @@ list.addEventListener('click', function(e) {
         saveTasks();
     }
 
-    // click ❌ btn -> delete task
+    // click ❌               btn -> delete task
     if (target.classList.contains('delete-btn')) {
         target.parentElement.remove();
         saveTasks();
