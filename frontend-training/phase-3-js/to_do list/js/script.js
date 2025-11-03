@@ -16,16 +16,16 @@ input.addEventListener('keypress', function(e) {
 });
 
 function addTask() {
-    const taskText = input.value.trim(); // remove extra space
+    const taskText = input.value.trim();
 
     if (taskText === '') {
         alert('You must add a task!');
-        return; // stop if input is empty
+        return;
     }
 
     const li = document.createElement('li');
     const span = document.createElement('span');
-    span.textContent = taskText; // put the task text in span
+    span.textContent = taskText;
 
     const delBtn = document.createElement('button');
     delBtn.textContent = '❌';
@@ -33,9 +33,9 @@ function addTask() {
 
     li.appendChild(span);
     li.appendChild(delBtn);
-    list.appendChild(li); // add task to the list
+    list.appendChild(li);
 
-    input.value = '';        // clear input
+    input.value = '';
 
     saveTasks(); // save to localStorage
 }

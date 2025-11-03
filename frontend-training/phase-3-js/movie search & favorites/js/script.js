@@ -1,6 +1,8 @@
 const apiKey = 'cf953335';
 
-const searchBtn = document.querySelector ('.search-btn')
+const seachBtnMovie = document.querySelector('.search-btn-movie')
+const movieInput = document.querySelector('.movie-text')
+
 const result = document.querySelector ('.results')
 const movieDetails = document.querySelector ('.movie-details')
 const movieFav = document.querySelector ('.movie-favorites')
@@ -21,26 +23,47 @@ dropdownItems.forEach( item => {
     })
 })
 
-// on click search-btn fetch movie details OR alert
-searchBtn.addEventListener('click', () => {
+seachBtnMovie.addEventListener('click', () => {
+    const movieName = movieInput.value.trim();
+
+    if (!movieName) {
+        alert('Please type a movie!');
+        return;
+    }
+
     if (!selectedGenre) {
         alert('Please select a genre!');
         return;
     }
 
+    localStorage.setItem('lastMovie', movieName);
+    localStorage.setItem('lastGenre', selectedGenre)
+
     currentPage = 1;
-    fetchMovieByGenre(selectedGenre, currentPage);
+    fetchByGenre(selectedGenre, currentPage);
 });
 
-// on key press fetch movie details OR alert
-document.addEventListener('keypress', function (e) {
-    if (!selectedGenre) {
-        alert('Please select a genre!');
-        return;
-    }
 
-    currentPage = 1;
-    fetchMovieByGenre(selectedGenre, currentPage);
+movieInput.addEventListener('keypress', function (e) {
+    const movieName = movieInput.value.trim();
+
+    if (e.key === "Enter"){
+        if (!movieName) {
+            alert('Please type a movie!');
+            return;
+        }
+
+        if (!selectedGenre) {
+            alert('Please select a genre!');
+            return;
+        }
+
+        localStorage.setItem('lastMovie', movieName);
+        localStorage.setItem('lastGenre', selectedGenre)
+
+        currentPage = 1;
+        fetchByGenre(selectedGenre, currentPage);
+    }
 })
 
 // previous btn decreases the current page and fetches the movies that list
@@ -48,7 +71,7 @@ prevBtn.addEventListener('click', () => {
     if (currentPage > 1){
         currentPage --;
 
-        fetchMovieByGenre(selectedGenre, currentPage);
+        fetchByGenre(selectedGenre, currentPage);
     }
 })
 
@@ -61,24 +84,31 @@ nextBtn.addEventListener('click', () => {
         behavior: 'smooth'
     });
 
-    fetchMovieByGenre(selectedGenre, currentPage);
+    fetchByGenre(selectedGenre, currentPage);
 })
-
 
 // show the last searched genre when resfresh
 window.addEventListener('DOMContentLoaded', () => {
-    const lastGenre = localStorage.getItem('lastGenre');
+    const lastMovie = localStorage.getItem('lastMovie');
+    const lastGenre = localStorage.getItem('lastGenre')
 
-    if (lastGenre) {
-        fetchMovieByGenre(lastGenre);
+    if (lastMovie) {
+        movieInput.value = lastMovie;
+    }
+
+    if(lastGenre){
         dropdownButton.textContent = lastGenre;
     }
-})
+});
 
-// fn that fetches movie details BY genre with api
-async function fetchMovieByGenre(genre, page) {
-    const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${genre}&page=${page}`;
-    console.log('Url is:', url);
+async function fetchByGenre(selectedGenre, page) {
+    const movieName = movieInput.value.trim();
+    if (!movieName) {
+        alert('Please type a movie first!');
+        return;
+    }
+
+    const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${movieName}&page=${page}&type=movie`;
     result.innerHTML = `
         <p style="text-align:center;
         margin-top: 5rem;
@@ -87,16 +117,44 @@ async function fetchMovieByGenre(genre, page) {
 
     try {
         const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error('Error!');
-        }
+        if (!response.ok) throw new Error('Error');
 
         const data = await response.json();
 
-        showMovies(data);
+        const detailMovies = await Promise.all(
+            data.Search.map(async (movie) => {
+                const detailResults = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`);
+                return await detailResults.json();
+            })
+        );
+
+        const filterMovies = detailMovies.filter(m => m.Genre && m.Genre.includes(selectedGenre));
+
+        if (filterMovies.length === 0){
+            result.innerHTML = `
+                <p style="text-align:center;
+                margin-top: 5rem;
+                font-size: 28px">No movies found in this genre.</p>
+            `;
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            return;
+        }
+
+        if(filterMovies.length < 10){
+            showMovies({ Search: filterMovies });
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+
+        else{
+            showMovies({ Search: filterMovies });
+            prevBtn.style.display = 'inline-block';
+            nextBtn.style.display = 'inline-block';
+        }
 
     } catch (error) {
+        console.log(error);
         result.innerHTML = '<p style="color:red; text-align:center;">Error loading movies. Check your internet connection.</p>';
     }
 }
@@ -135,9 +193,6 @@ function showMovies (data) {
 
         result.appendChild(movieCard);
     });
-
-    prevBtn.style.display = 'inline-block';
-    nextBtn.style.display = 'inline-block';
 }
 
 // fn that gets Genre, Actors & Plot
@@ -194,7 +249,6 @@ function addToFavorites(movie) {
         const btn = document.querySelector('.add-fav-btn');
         btn.textContent = 'Added!';
         btn.style.backgroundColor = 'green';
-
     }
 }
 
@@ -262,13 +316,11 @@ let debounceTimer;
 document.addEventListener('keypress', function(e) {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
-        if(!selectedGenre) {
-            alert('Please select a genre!');
+        if(!movieInput) {
+            alert('Please type a movie!');
             return;
         }
         currentPage = 1;
-        fetchMovieByGenre(selectedGenre, currentPage);
+        fetchByGenre(selectedGenre, currentPage);
     }, 500);
 })
-
-
