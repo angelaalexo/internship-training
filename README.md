@@ -1,2 +1,1 @@
-# internship-training
-Piksel internship repository
+this is a repository filled with exercises
